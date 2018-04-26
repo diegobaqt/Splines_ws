@@ -14,15 +14,19 @@ import frames.primitives.*;
 import frames.core.*;
 import frames.processing.*;
 
-// global variables
-// modes: 0 natural cubic spline; 1 Hermite;
-// 2 (degree 7) Bezier; 3 Cubic Bezier
+// Global variables
+// modes: 
+// 0 natural cubic spline; 
+// 1 Hermite;
+// 2 (degree 7) Bezier; 
+// 3 Cubic Bezier
+
 int mode;
 
 Scene scene;
 Interpolator interpolator;
 OrbitNode eye;
-boolean drawGrid = true, drawCtrl = true;
+boolean drawGrid = true, drawCtrl = false;
 
 //Choose P3D for a 3D scene, or P2D or JAVA2D for a 2D scene
 String renderer = P3D;
@@ -59,18 +63,38 @@ void draw() {
   if (drawCtrl) {
     fill(255, 0, 0);
     stroke(255, 0, 255);
-    for (Frame frame : interpolator.keyFrames())
+    for (Frame frame : interpolator.keyFrames()){
       scene.drawPickingTarget((Node)frame);
+    }
+      
   } else {
     fill(255, 0, 0);
     stroke(255, 0, 255);
     scene.drawPath(interpolator);
   }
-  // implement me
-  // draw curve according to control polygon an mode
-  // To retrieve the positions of the control points do:
-  // for(Frame frame : interpolator.keyFrames())
-  //   frame.position();
+  
+  float[][] points = new float[interpolator.keyFrames().size()][3];
+
+  for (int i = 0; i < interpolator.keyFrames().size(); i++) {
+    Frame f = interpolator.keyFrames().get(i);
+    points[i][0] = f.position().x();
+    points[i][1] = f.position().y();
+    points[i][2] = f.position().z();
+  }
+  
+  if(mode == 0){
+    Natural natural = new Natural(points);
+    natural.curve();
+  } else if(mode == 1){
+    //Hermite hermite = new Hermite(points);
+    //hermite.curve();
+  } else if(mode == 2){
+    CatmullRom bezier = new CatmullRom(points);
+    bezier.curve();
+  } else if(mode == 3){
+    Bezier bezier = new Bezier(points, 3);
+    bezier.curve();
+  }
 }
 
 void keyPressed() {
