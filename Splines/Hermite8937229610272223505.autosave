@@ -1,0 +1,62 @@
+class Hermite{
+  
+  float[][] points;
+  float step = 1/16;
+  int grade;
+  
+  Hermite(float[][] ps){  
+    points = ps;
+    grade = 7;
+  }
+  
+  double factorial(int n) {    
+    double factorial = 1;    
+    if (n == 0 || n == 1) 
+        return factorial;
+    else {
+        for (int i = 2; i <= n; i++) {
+            factorial *= i; 
+        }  
+        return factorial;        
+    }              
+  }
+  
+  double calcularB(double u, int n, int k) {    
+        return (factorial(n) / (factorial(k) * factorial(n - k))) * 
+                Math.pow(u, k) * Math.pow(1 - u, n - k);    
+  }
+
+  void calcPoint(){
+    float x = 0.0, y = 0.0, z = 0.0; 
+    float[] previous = new float[3];
+    for(float s = 0; s<=1 ; s+=step){
+      for(int i = 0; i <=grade; i++){
+         double b = calcularB(s, grade, i);
+         x += points[i][0] * b;
+         y += points[i][1] * b;
+         z += points[i][2] * b;
+      }  
+      if (s>0){
+        System.out.println("Print Line");
+        line(previous[0], previous[1], previous[2], x, y, z);
+      }
+      previous[0] = x;
+      previous[1] = y;
+      previous[2] = z;
+    }
+        
+  }
+  
+  
+  
+
+
+  void compute(){ 
+    stroke(0, 0, 255);
+    calcPoint();
+  }
+   
+  void curve(){
+    compute();
+  }
+}

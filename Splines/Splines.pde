@@ -86,10 +86,12 @@ void draw() {
     Natural natural = new Natural(points);
     natural.curve();
   } else if(mode == 1){
-    //Hermite hermite = new Hermite(points);
-    //hermite.curve();
+    Hermite hermite = new Hermite(points);
+    hermite.curve();
   } else if(mode == 2){
-    CatmullRom bezier = new CatmullRom(points);
+    //CatmullRom bezier = new CatmullRom(points);
+    //bezier.curve();    
+    Bezier bezier = new Bezier(points, 7);
     bezier.curve();
   } else if(mode == 3){
     Bezier bezier = new Bezier(points, 3);
