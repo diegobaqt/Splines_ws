@@ -56,6 +56,8 @@ Complete la tabla:
 
 [4] http://graphics.cs.ucdavis.edu/~joy/ecs278/notes/Catmull-Rom-Spline.pdf
 
+[5] http://jorgetorregrosa.blogspot.com.co/2012/06/curvas-de-bezier-investigacion-y.html
+
 ## Entrega
 
 * Modo de entrega: Haga [fork](https://help.github.com/articles/fork-a-repo/) de la plantilla e informe la url del repo en la hoja *urls* de la plantilla compartida (una sola vez por grupo). Plazo: 29/4/18 a las 24h.
