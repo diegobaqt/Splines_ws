@@ -1,6 +1,5 @@
 // Este algoritmo fue adaptado de 
-// https://en.wikipedia.org/wiki/Cubic_Hermite_spline y 
-// https://people.sc.fsu.edu/~jburkardt/cpp_src/hermite_cubic/hermite_cubic.html
+// http://mathworld.wolfram.com/CubicSpline.html
 
 class Natural {
   float[][] points;

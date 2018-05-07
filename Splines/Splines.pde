@@ -20,6 +20,7 @@ import frames.processing.*;
 // 1 Hermite;
 // 2 (degree 7) Bezier; 
 // 3 Cubic Bezier
+// 4 Catmull Rom
 
 int mode;
 
