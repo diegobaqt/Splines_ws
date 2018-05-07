@@ -28,6 +28,7 @@ Interpolator interpolator;
 OrbitNode eye;
 boolean drawGrid = true, drawCtrl = false;
 
+
 //Choose P3D for a 3D scene, or P2D or JAVA2D for a 2D scene
 String renderer = P3D;
 
@@ -74,7 +75,7 @@ void draw() {
   }
   
   float[][] points = new float[interpolator.keyFrames().size()][3];
-
+  
   for (int i = 0; i < interpolator.keyFrames().size(); i++) {
     Frame f = interpolator.keyFrames().get(i);
     points[i][0] = f.position().x();
@@ -83,23 +84,31 @@ void draw() {
   }
   
   if(mode == 0){
+    System.out.println("Natural");
     Natural natural = new Natural(points);
     natural.curve();
   } else if(mode == 1){
-    //Hermite hermite = new Hermite(points);
-    //hermite.curve();
-  } else if(mode == 2){
-    CatmullRom bezier = new CatmullRom(points);
-    bezier.curve();
+    System.out.println("Hermite");
+    Hermite hermite = new Hermite(points);
+    hermite.curve();
+  }  else if(mode == 2){
+    System.out.println("Bezier 7");
+    //Bezier bezier = new Bezier(points, 7);
+    //bezier.curve();
   } else if(mode == 3){
-    Bezier bezier = new Bezier(points, 3);
-    bezier.curve();
+    System.out.println("Bezier 3");
+    //Bezier bezier = new Bezier(points, 3);
+    //bezier.curve();
+  } else if(mode == 4){
+    System.out.println("Catmull Rom");
+    CatmullRom catmull = new CatmullRom(points);
+    catmull.curve();
   }
 }
 
 void keyPressed() {
   if (key == ' ')
-    mode = mode < 3 ? mode+1 : 0;
+    mode = mode < 5 ? mode+1 : 0;
   if (key == 'g')
     drawGrid = !drawGrid;
   if (key == 'c')
