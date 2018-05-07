@@ -15,14 +15,19 @@ Se realiza la implementación de interpolación para curvas cúbicas naturales, 
 
 Las siguientes imágenes muestran las diferentes representaciones:
 
+Natural Cúbica
 ![Natutal](1.PNG)
 
+Hermite Cúbica
 ![Hermite](2.PNG)
 
+Bezier Grado 7 (Casteljau)
 ![Bezier Grado 7](3.PNG)
 
+Bezier Grado 3 (Cúbica)
 ![Bezier Cúbica](4.PNG)
 
+Algoritmo de Catmull-Rom
 ![Catmull Rom](5.PNG)
 
 ## Profundización
